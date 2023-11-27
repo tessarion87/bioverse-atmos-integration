@@ -6,7 +6,7 @@ import shutil
 from tqdm import tqdm, trange
 
 
-def atmosatm(model, filebase = ''):
+def atmosatm(model, location,filebase = ''):
 
 	# Read the atmos profiles ------------------------------
 	ptfile=model+'/profile.pt'
@@ -93,11 +93,14 @@ def atmosatm(model, filebase = ''):
 	newf.append('<SURFACE-NSURF>0')                              # Number of components describing the surface properties [areal mixing]
 
 	# Save atmospheric file
-
+	if location=="home":
+		dir_root='/media/tessa/Storage/'
+	if location=="office":
+		dir_root="/home/tessa/"
 	if len(filebase):
 		model=model.split('/')[1]
 		model_file="%s_cfg.txt" % model
-		config_name="/home/tessa/Alien Earths/Bioverse atmosphere integration/psg_configs/"+model_file
+		config_name=dir_root+"Alien Earths/Bioverse atmosphere integration/psg_configs/"+model_file
 		fw = open(config_name,'w')
 		for line in newf: fw.write('%s\n' % line)
 		fw.close()
@@ -105,15 +108,17 @@ def atmosatm(model, filebase = ''):
 	
 	return newf
 
-def psgspec(model, config=[], showplot=True):
+def psgspec(model, location,config=[], showplot=True):
 	#psgurl = 'http://localhost:3000' # URL of the PSG server - For PSG/Docker
 	#psgurl = 'http://localhost' # URL of the test PSG server
 	psgurl = 'https://psg.gsfc.nasa.gov' # URL of the PSG server
-
-	# Save configuration and run via the API
+	if location=="home":
+		dir_root='/media/tessa/Storage/'
+	if location=="office":
+		dir_root="/home/tessa/"	# Save configuration and run via the API
 	model_file="%s_cfg.txt" % model
-	config_name="/home/tessa/Alien Earths/Bioverse atmosphere integration/psg_configs/"+model_file
-	target="/home/tessa/Alien Earths/Bioverse atmosphere integration/"+model_file
+	config_name=dir_root+"Alien Earths/Bioverse atmosphere integration/psg_configs/"+model_file
+	target=dir_root+"Alien Earths/Bioverse atmosphere integration/"+model_file
 	# Shuffle files around temporarily to keep everything tidy
 	shutil.copyfile(config_name, target)
 	# Actually query PSG and get results
@@ -121,7 +126,7 @@ def psgspec(model, config=[], showplot=True):
 	for line in newf: fw.write('%s\n' % line)
 	fw.close()
 	os.system('curl -s --data-urlencode file@%s_cfg.txt %s/api.php > %s_rad.txt' % (model, psgurl, model))
-	dest_path="/home/tessa/Alien Earths/Bioverse atmosphere integration/psg_output/"+"%s_rad.txt" % model
+	dest_path=dir_root+"/Alien Earths/Bioverse atmosphere integration/psg_output/"+"%s_rad.txt" % model
 	# More file shuffling
 	shutil.copyfile("%s_rad.txt" % model,dest_path)
 	os.remove("%s_cfg.txt" % model)
@@ -139,10 +144,10 @@ def psgspec(model, config=[], showplot=True):
 		#Endfor
 		data = np.genfromtxt(dest_path)
 		cols = cols.split(); wnoise=0
-
+location="office"
 model_list=glob.glob('sample atmos results/*')
 with trange(len(model_list)) as t:
 	for i in t:
 		model=model_list[i].split('/')[1]
-		newf=atmosatm(model_list[i],filebase=model)
-		psgspec(model)
+		newf=atmosatm(model_list[i],location,filebase=model)
+		psgspec(model,location)
