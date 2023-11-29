@@ -1,1 +1,23 @@
-Your other API call is still running, please let it finish, wait 10 minutes, or consider installing the PSG Docker version.
+# WARNING | PUMAS | The aerosols require higher scattering requirements, of NMAX:1 and LMAX:14, for the selected aerosols having a max g of 0.62.
+# ------------------------------------------------------------------------
+# Radiance spectrum
+# NASA-GSFC Planetary Spectrum Generator (PSG) (Villanueva et al. 2018, 2022)
+# Synthesized on Tue Nov 28 16:11:41 2023
+# Doppler velocities [km/s] (vobs,vrot+vorb,vwidth,vrfl,vstr): 0.00000,0.00000,0.02000,0.00000,0.00000
+# ------------------------------------------------------------------------
+# Spectra synthesized with the Planetary and Universal Model of Atmospheric Scattering (PUMAS, Villanueva et al. 2018, 2022)
+# Single scattering radiative transfer method
+# ------------------------------------------------------------------------
+# Spectral unit: Wavelength [um]
+# Radiance unit: Spectral radiance [W/sr/m2/um]
+# Wave/freq Total Mars
+1.000000000e+00  1.0810259e+01  1.08103e+01
+1.100000000e+00  8.7519299e+00  8.75193e+00
+1.200000000e+00  7.3339811e+00  7.33398e+00
+1.300000000e+00  5.6719024e+00  5.67190e+00
+1.400000000e+00  3.4823257e+00  3.48233e+00
+1.500000000e+00  4.4926734e+00  4.49267e+00
+1.600000000e+00  3.1081429e+00  3.10814e+00
+1.700000000e+00  1.5728991e+00  1.57290e+00
+1.800000000e+00  1.5319610e+00  1.53196e+00
+1.900000000e+00  1.5971532e+00  1.59715e+00
