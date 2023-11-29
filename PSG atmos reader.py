@@ -6,7 +6,12 @@ import shutil
 from tqdm import tqdm, trange
 
 
-def atmosatm(model, location,filebase = ''):
+def atmosatm(model, location,tel='',filebase = ''):
+
+	if location=="home":
+		dir_root='/media/tessa/Storage/Alien_Earths/'
+	if location=="office":
+		dir_root="/home/tessa/Alien_Earths/"
 
 	# Read the atmos profiles ------------------------------
 	ptfile=model+'/profile.pt'
@@ -91,12 +96,22 @@ def atmosatm(model, location,filebase = ''):
 	newf.append('<SURFACE-ALBEDO>0.25')                          # Albedo the surface [0:non-reflectance, 1:fully-reflective]
 	newf.append('<SURFACE-EMISSIVITY>1.0')                       # Emissivity of the surface [0:non-emitting, 1:perfect-emitter]
 	newf.append('<SURFACE-NSURF>0')                              # Number of components describing the surface properties [areal mixing]
-
+	
+	# Add telescope parameters
+	if tel!='':
+		if tel=='HabEx':
+			tel_file='HabEx.dat'
+		elif tel=='LUVOIR':
+			tel_file='LUVOIR.dat'
+	
+		tel_path=dir_root+'/bioverse-atmos-integration/telescope_config/'+tel_file
+		tel_cfg=open(tel_path,'r')
+		lines=tel_cfg.readlines()
+		for line in lines:
+			newf.append(line)
+	
 	# Save atmospheric file
-	if location=="home":
-		dir_root='/media/tessa/Storage/Alien_Earths/'
-	if location=="office":
-		dir_root="/home/tessa/Alien_Earths/"
+
 	if len(filebase):
 		model=model.split('/')[1]
 		model_file="%s_cfg.txt" % model
@@ -168,5 +183,5 @@ model_list=glob.glob('sample atmos results/*')
 with trange(len(model_list)) as t:
 	for i in t:
 		model=model_list[i].split('/')[1]
-		newf=atmosatm(model_list[i],location,filebase=model)
-		psgspec(model,location)
+		newf=atmosatm(model_list[i],location,tel='',filebase=model)
+		psgspec(model,location,showplot=True)

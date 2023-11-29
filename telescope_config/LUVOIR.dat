@@ -1,0 +1,12 @@
+<GENERATOR-INSTRUMENT>LUVOIR_A-UV: The Extreme Coronagraph for Living Planetary Systems (ECLIPS) delivers continuous spectral coverage from 200 nm to 2.5 um via three channels, UV (200 to 525 nm), VIS (515 nm to 1030 nm), and NIR (1 to 2 microns). The UV channel is effectively an imager and provides a maximum resolution of RP=7, while the VIS channel RP=140, and NIR=70. The core coronagraph throughput is practically twice for LUVOIR-B than A
+<GENERATOR-RANGE1>0.2
+<GENERATOR-RANGE2>0.515
+<GENERATOR-RANGEUNIT>um
+<GENERATOR-RESOLUTION>7
+<GENERATOR-RESOLUTIONUNIT>RP
+<GENERATOR-TELESCOPE>CORONA
+<GENERATOR-DIAMTELE>15.0
+<GENERATOR-BEAM>1
+<GENERATOR-BEAM-UNIT>diffrac
+<GENERATOR-TELESCOPE1>1E-10
+<GENERATOR-TELESCOPE2>4.5
