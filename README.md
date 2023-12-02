@@ -17,8 +17,8 @@ Note: if you're using PyAtmos, insert the following code at line 401 of `simulat
 `atmos_to_PSG` is made up of two functions, `atmosatm` and `psgspec`. The functions are designed to run in sequence one after another--first `atmosatm`, then `psgspec`.
 
 atmosatm (model, tel='',filebase='',null_spec=False,removed\_gas='') 
-: Creates a configuration file from the profile.pt and hcaer.out files. Parameters:
-: _model_: the name of the folder containing the profile.pt and hcaer.out files
+:  Creates a configuration file from the profile.pt and hcaer.out files. Parameters:
+:  _model_: the name of the folder containing the profile.pt and hcaer.out files
 : _tel_: Optional. The telescope configuration used in generating the spectrum. Options: 'JWST', 'LUVOIR', 'HabEx', and 'Nautilus'
 : _filebase_ : Optional. The prefix used on the name of the resulting configuration file
 : _null\_spec_ : Determines whether or not the resulting configuration has the atmospheric species of interest removed, for use with bioverse's `t_ref` function. Requires a value for removed_gas (see below)
