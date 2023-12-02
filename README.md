@@ -19,7 +19,7 @@ Note: if you're using PyAtmos, insert the following code at line 401 of `simulat
 atmosatm (model, tel='',filebase='',null_spec=False,removed\_gas='') 
 : Creates a configuration file from the profile.pt and hcaer.out files. Parameters:
 
-: _model_: the name of the folder containing the profile.pt and hcaer.out files
+:_model_: the name of the folder containing the profile.pt and hcaer.out files
 
 : _tel_: Optional. The telescope configuration used in generating the spectrum. Options: 'JWST', 'LUVOIR', 'HabEx', and 'Nautilus'
 
