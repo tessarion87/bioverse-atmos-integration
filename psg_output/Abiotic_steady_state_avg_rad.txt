@@ -1,1 +1,1 @@
-Your other API call is still running, please let it finish, wait 10 minutes, or consider installing the PSG Docker version.
+<html><header><title>Planetary Spectrum Generator</title></header><body>You have reached the maximum number of visits for PSG. Please wait 24 hours or contact us so we can properly collaborate and allocate resources for this project.</body></html>
