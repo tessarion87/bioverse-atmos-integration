@@ -7,7 +7,7 @@
 <ATMOSPHERE-NGAS>11
 <ATMOSPHERE-GAS>N2,H2O,CH4,CO2,O2,O3,CO,H2CO,NO2,SO2,N2O
 <ATMOSPHERE-TYPE>HIT[22],HIT[1],HIT[6],HIT[2],HIT[7],HIT[3],HIT[5],HIT[20],HIT[10],HIT[9],HIT[4]
-<ATMOSPHERE-ABUN>1,1,1,1,1,1,1,1,1,1,1
+<ATMOSPHERE-ABUN>1,1,0,1,1,1,1,1,1,1,1
 <ATMOSPHERE-UNIT>scl,scl,scl,scl,scl,scl,scl,scl,scl,scl,scl
 <ATMOSPHERE-NAERO>1
 <ATMOSPHERE-AEROS>Haze
@@ -72,29 +72,49 @@
 <SURFACE-ALBEDO>0.25
 <SURFACE-EMISSIVITY>1.0
 <SURFACE-NSURF>0
-<GENERATOR-INSTRUMENT>Nautilus Deep Space Observatory
+<GENERATOR-INSTRUMENT>HabEx_SS-VIS: The HabEx StarShade (SS) will provide extraordinary high-contrast capabilities from the UV (0.2 to 0.45 um), to the visible (0.45 to 1um), and to the infrared (0.975 to 1.8 um). By limiting the number of optical surfaces, this configuration provides high optical throughput (0.2 to 0.4) across this broad of wavelengths, while the quantum efficiency (QE) is expected to be 0.9 for the VU and visible detectors and 0.6 for the infrared detector.
 
-<GENERATOR-RANGE1>0.2
+<GENERATOR-INSTRUMENT>HabEx_SS-VIS: The HabEx StarShade (SS) will provide extraordinary high-contrast capabilities from the UV (0.2 to 0.45 um), to the visible (0.45 to 1um), and to the infrared (0.975 to 1.8 um). By limiting the number of optical surfaces, this configuration provides high optical throughput (0.2 to 0.4) across this broad of wavelengths, while the quantum efficiency (QE) is expected to be 0.9 for the VU and visible detectors and 0.6 for the infrared detector. The UV channel provides a resolution (RP
 
-<GENERATOR-RANGE2>2
+<GENERATOR-RANGE1>0.45
+
+<GENERATOR-RANGE2>0.975
 
 <GENERATOR-RANGEUNIT>um
 
-<GENERATOR-RESOLUTION>120
+<GENERATOR-RESOLUTION>140
 
 <GENERATOR-RESOLUTIONUNIT>RP
 
-<GENERATOR-TELESCOPE>SINGLE
+<GENERATOR-TELESCOPE>CORONA
 
-<GENERATOR-DIAMTELE>50
+<GENERATOR-DIAMTELE>4.0
 
 <GENERATOR-BEAM>1.0
 
 <GENERATOR-BEAM-UNIT>diffrac
 
-<GENERATOR-TELESCOPE1>1
+<GENERATOR-TELESCOPE1>1E-10
 
-<GENERATOR-TELESCOPE2>2.0
+<GENERATOR-TELESCOPE2>4.5
 
-<GENERATOR-TELESCOPE3>1.0
+<GENERATOR-TELESCOPE3>7e-11@-0.000e+00,7e-11@-1.113e-02,7e-11@-2.136e-02,3.544e-03@-3.033e-02,1.949e-02@-3.787e-02,3.367e-02@-4.146e-02,6.734e-02@-4.451e-02,1.241e-01@-4.774e-02,2.091e-01@-5.079e-02,2.818e-01@-5.313e-02,3.332e-01@-5.438e-02,3.987e-01@-5.654e-02,4.661e-01@-5.869e-02,5.352e-01@-5.995e-02,6.008e-01@-6.192e-02,6.344e-01@-6.300e-02,6.699e-01@-6.444e-02,6.911e-01@-6.605e-02,7.000e-01@-7.126e-02,7.000e-01@-8.705e-02,7.000e-01@-1.088e-01,7.000e-01@-1.240e-01,7.000e-01@-1.310e-01
+
+<GENERATOR-NOISE>CCD
+
+<GENERATOR-NOISE1>0.008@0.2,0.008@0.975,0.32@0.976,0.32@1.8
+
+<GENERATOR-NOISE2>3e-5@0.2,3e-5@0.975,0.005@0.976,0.005@1.8
+
+<GENERATOR-NOISEOTEMP>270
+
+<GENERATOR-NOISEOEFF>0.2260@0.2000,0.2201@0.2112,0.2182@0.2224,0.2300@0.2587,0.2536@0.3035,0.2673@0.3399,0.2791@0.3874,0.2830@0.4294,0.2850@0.4490,0.1796@0.4500,0.1848@0.5161,0.1749@0.6503,0.1474@0.7734,0.1415@0.8434,0.1592@0.9021,0.1926@0.9608,0.1988@0.9750,0.1988@0.9760,0.2162@1.0587,0.2339@1.2462,0.2437@1.4503,0.2516@1.6657,0.2594@1.8000
+
+<GENERATOR-NOISEOEMIS>0.10
+
+<GENERATOR-NOISETIME>3600
+
+<GENERATOR-NOISEFRAMES>100
+
+<GENERATOR-NOISEPIXELS>10
 

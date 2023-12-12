@@ -48,7 +48,9 @@ def atmosatm(model,tel='',filebase = '',null_spec=False,removed_gas=''):
 
 	  # Write configuration file --------------------------------
 	abun_list=[]
+	object_name='<OBJECT-NAME>'+model.rsplit('/', 1)[-1]
 	newf = []
+	newf.append(object_name)
 	newf.append('<ATMOSPHERE-DESCRIPTION>ATMOS Photochemistry')  # Description establishing the source/reference for the vertical profile
 	newf.append('<ATMOSPHERE-STRUCTURE>Equilibrium')             # The structure of the atmosphere, None / Equilibrium:'Hydrostatic equilibrium' / Coma:'Cometary expanding coma'
 	newf.append('<ATMOSPHERE-PRESSURE>%.3f' % gprof[0,0])        # For equilibrium atmospheres, this field defines the surface pressure; while for cometary coma, this field indicates the gas production rate

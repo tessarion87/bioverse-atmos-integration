@@ -28,19 +28,22 @@ for i in range(len(biotic_flux_list)):
 
 model_list=glob.glob('sample_atmos_results/integration_test*')
 
-#create the null spectrum for t_ref
-model=model_list[0].split('/')[1]
-newf=atmosatm(model_list[0],tel='JWST',filebase=model,null_spec=True,removed_gas="CH4")
-psgspec(model,newf,showplot=True,null_spec=True)
-null_rad=curr_dir+'/psg_output/%s_null_rad.txt' % model
-
+tel='LUVOIR'
 # generate spectra and then calculate t_ref
-with trange(len(model_list)) as t:
-	for i in t:
-		model=model_list[i].split('/')[1]
-		newf=atmosatm(model_list[i],tel='JWST',filebase=model)
-		psgspec(model,newf,showplot=True)
-		model_rad=curr_dir+'/psg_output/%s_rad.txt' % model
-		t_ref = compute_t_ref(filenames=(model_rad,null_rad), t_exp=100, wl_min=0.4, wl_max=0.8)
-		print("Required exposure time for %s: {:.1f} hr".format(t_ref) % model)
-		
+for i in range(len(model_list)):
+	model=model_list[i].split('/')[1]
+	
+	#create the null spectrum for t_ref
+	
+	null_newf=atmosatm(model_list[i],tel=tel,filebase=model,null_spec=True,removed_gas="CH4")
+	psgspec(model,null_newf,showplot=True,null_spec=True)
+	null_rad=curr_dir+'/psg_output/%s_null_rad.txt' % model
+
+	#create radiance spectrum
+
+	newf=atmosatm(model_list[i],tel=tel,filebase=model)
+	psgspec(model,newf,showplot=True)
+	model_rad=curr_dir+'/psg_output/%s_rad.txt' % model
+	t_ref = compute_t_ref(filenames=(model_rad,null_rad), t_exp=100, wl_min=0.4, wl_max=0.9,)
+	print("Required exposure time for %s: {:.1f} hr".format(t_ref) % model)
+	
