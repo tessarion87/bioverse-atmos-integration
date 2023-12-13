@@ -5,30 +5,30 @@ import pyatmos
 import os
 from tqdm import tqdm, trange
 
-atmos = pyatmos.Simulation(code_path='/media/tessa/Storage/Dissertation_backup/atmos-master', DEBUG=True)
-atmos.start()
+# atmos = pyatmos.Simulation(code_path='/media/tessa/Storage/Dissertation_backup/atmos-master', DEBUG=True)
+# atmos.start()
 
 curr_dir=os.getcwd()
 
-biotic_flux_list=[9.64E+11]
+# biotic_flux_list=[8.7E+8,1.45E10,9.64E+11]
 
 
-for i in range(len(biotic_flux_list)):
-	CH4_flux=biotic_flux_list[i]
-	print(CH4_flux)
-	output_dir=curr_dir+'/sample_atmos_results/integration_test_{n}'.format(n=i)
-	args = {
-		'species_fluxes': {'CH4' :CH4_flux},
-		'max_photochem_iterations' : 50000, 
-		'max_clima_steps' : 10, 
-		'output_directory' : output_dir}
+# for i in range(len(biotic_flux_list)):
+	# CH4_flux=biotic_flux_list[i]
+	# print(CH4_flux)
+	# output_dir=curr_dir+'/sample_atmos_results/integration_test_{n}'.format(n=i)
+	# args = {
+		# 'species_fluxes': {'CH4' :CH4_flux},
+		# 'max_photochem_iterations' : 50000, 
+		# 'max_clima_steps' : 10, 
+		# 'output_directory' : output_dir}
 	
 	
-	atmos.run(**args)
+	# atmos.run(**args)
 
 model_list=glob.glob('sample_atmos_results/integration_test*')
 
-tel='LUVOIR'
+tel='JWST'
 # generate spectra and then calculate t_ref
 for i in range(len(model_list)):
 	model=model_list[i].split('/')[1]
