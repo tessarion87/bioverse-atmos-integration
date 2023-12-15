@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import shutil
 
-def atmosatm(model,tel='',filebase = '',null_spec=False,removed_gas=''):
+def atmosatm(model,tel='',filebase = '',null_spec=False,removed_gas='',star=''):
 
 	dir_root=os.getcwd()
 
@@ -53,6 +53,8 @@ def atmosatm(model,tel='',filebase = '',null_spec=False,removed_gas=''):
 		object_name=object_name+'_null'
 	newf = []
 	newf.append(object_name)
+	if star !='':
+		star_object='<OBJECT-STAR-TYPE>'+star
 	newf.append('<ATMOSPHERE-DESCRIPTION>ATMOS Photochemistry')  # Description establishing the source/reference for the vertical profile
 	newf.append('<ATMOSPHERE-STRUCTURE>Equilibrium')             # The structure of the atmosphere, None / Equilibrium:'Hydrostatic equilibrium' / Coma:'Cometary expanding coma'
 	newf.append('<ATMOSPHERE-PRESSURE>%.3f' % gprof[0,0])        # For equilibrium atmospheres, this field defines the surface pressure; while for cometary coma, this field indicates the gas production rate
@@ -113,6 +115,12 @@ def atmosatm(model,tel='',filebase = '',null_spec=False,removed_gas=''):
 			tel_file='Nautilus.dat'
 		elif tel=='JWST':
 			tel_file='JWST.dat'
+		elif tel=='iSHELL':
+			tel_file='iSHELL.dat'
+		elif tel=='Keck_HIRES':
+			tel_file='Keck_HIRES.dat'
+		elif tel=='HST':
+			tel_file='HST.dat'
 		tel_path=dir_root+'/telescope_config/'+tel_file
 		tel_cfg=open(tel_path,'r')
 		lines=tel_cfg.readlines()

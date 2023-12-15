@@ -1,0 +1,22 @@
+<GENERATOR-INSTRUMENT>Keck_HIRES: HIRES is the High Resolution Echelle Spectrometer at the Keck observatory on Manuakea (4200m), Hawaii. It is a grating cross-dispersed, echelle spectrograph capable of operating between 0.3 and 1.0 microns at high resolutions (up to RP 85,000). Several slits are available in width and length, since order separation varies between 6 and 43 arcseconds. Typical throughput is 0.15, yet it drops substantially (below 0.05) beyond 0.8 um.
+<GENERATOR-RANGE1>0.3
+<GENERATOR-RANGE2>1.0
+<GENERATOR-RANGEUNIT>um
+<GENERATOR-RESOLUTION>50000
+<GENERATOR-RESOLUTIONUNIT>RP
+<GENERATOR-TELESCOPE>SINGLE
+<GENERATOR-DIAMTELE>10
+<GENERATOR-BEAM>0.5
+<GENERATOR-BEAM-UNIT>arcsec
+<GENERATOR-TELESCOPE1>1
+<GENERATOR-TELESCOPE2>2.0
+<GENERATOR-TELESCOPE3>1.0
+<GENERATOR-NOISE>CCD
+<GENERATOR-NOISE1>3.0
+<GENERATOR-NOISE2>0.8
+<GENERATOR-NOISEOTEMP>273
+<GENERATOR-NOISEOEFF>0.15
+<GENERATOR-NOISEOEMIS>0.05
+<GENERATOR-NOISETIME>60
+<GENERATOR-NOISEFRAMES>12
+<GENERATOR-NOISEPIXELS>8

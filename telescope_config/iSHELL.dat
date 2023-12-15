@@ -1,0 +1,22 @@
+<GENERATOR-INSTRUMENT>IRTF_iSHELL: iSHELL is the 1.1-5.3 um cross-dispersed high-resolution (R 70,000) echelle spectrograph at the NASA Infrared Telescope Facility on Maunakea (4200 m), Hawaii. The instrument samples this broad spectral range (J, H, K, L, Lp and M bands) by employing an array of cross-dispersers and filters. Several slits are available (0.375, 0.75, 1.5 and 4.0 arcsec). Typical throughputs are above 0.15, yet drop substantially (below 0.05) beyond 1.25 um.
+<GENERATOR-RANGE1>2700
+<GENERATOR-RANGE2>2740
+<GENERATOR-RANGEUNIT>cm
+<GENERATOR-RESOLUTION>70000
+<GENERATOR-RESOLUTIONUNIT>RP
+<GENERATOR-TELESCOPE>SINGLE
+<GENERATOR-DIAMTELE>3
+<GENERATOR-BEAM>0.5
+<GENERATOR-BEAM-UNIT>arcsec
+<GENERATOR-TELESCOPE1>1
+<GENERATOR-TELESCOPE2>2.0
+<GENERATOR-TELESCOPE3>1.0
+<GENERATOR-NOISE>CCD
+<GENERATOR-NOISE1>12
+<GENERATOR-NOISE2>0.05
+<GENERATOR-NOISEOTEMP>273
+<GENERATOR-NOISEOEFF>0.18
+<GENERATOR-NOISEOEMIS>0.05
+<GENERATOR-NOISETIME>15
+<GENERATOR-NOISEFRAMES>16
+<GENERATOR-NOISEPIXELS>8

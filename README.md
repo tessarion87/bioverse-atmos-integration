@@ -16,14 +16,15 @@ Note: if you're using PyAtmos, insert the following code at line 401 of `simulat
 
 `atmos_to_PSG` is made up of two functions, `atmosatm` and `psgspec`. The functions are designed to run in sequence one after another--first `atmosatm`, then `psgspec`.
 
-### atmosatm (_model, tel='', filebase='', null_spec=False, removed\_gas=''_) 
+### atmosatm (_model, tel='', filebase='', null_spec=False, removed\_gas='',star=''_) 
 Creates a configuration file from the profile.pt and hcaer.out files. Parameters:
 
 - _model_: the name of the folder containing the profile.pt and hcaer.out files
-- _tel_: Optional. The telescope configuration used in generating the spectrum. Options: 'JWST', 'LUVOIR', 'HabEx', and 'Nautilus'
+- _tel_: Optional. The telescope configuration used in generating the spectrum. Options: 'JWST', 'LUVOIR', 'HabEx','Keck_HIRES', 'HST', and 'Nautilus'
 - _filebase_ : Optional. The prefix used on the name of the resulting configuration file
 - _null\_spec_ : Determines whether or not the resulting configuration has the atmospheric species of interest removed, for use with bioverse's `t_ref` function. Requires a value for removed_gas (see below)
 - _removed\_gas_: The atmospheric species of interest that's removed to produce a null spectrum for use with `t_ref`. Options: 'H2O', 'CH4', 'C2H6', 'CO2', 'O2', 'O3', 'CO', 'H2CO', 'HNO3', 'NO2', 'SO2', 'N2O', and 'N2'
+- _star_: optional. The spectral class of the star that the simulated planet orbits. Options: O, B, A, F, G, K, and M. Note: may require changing the _pstar_ value in the `PLANET.dat` file of the atmos template you're using. 
 
 Note: if you're using PSG locally via Docker, the coronagraph options for _tel_ (HabEx and LUVOIR) are extremely computationally intensive, and may run quite slowly.
     

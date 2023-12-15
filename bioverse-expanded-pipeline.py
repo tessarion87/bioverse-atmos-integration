@@ -35,13 +35,13 @@ for i in range(len(model_list)):
 	
 	#create the null spectrum for t_ref
 	
-	null_newf=atmosatm(model_list[i],tel=tel,filebase=model,null_spec=True,removed_gas="CH4")
+	null_newf=atmosatm(model_list[i],tel=tel,filebase=model,null_spec=True,removed_gas="CH4",star='M')
 	psgspec(model,null_newf,showplot=True,null_spec=True)
 	null_rad=curr_dir+'/psg_output/%s_null_rad.txt' % model
 
 	#create radiance spectrum
 
-	newf=atmosatm(model_list[i],tel=tel,filebase=model)
+	newf=atmosatm(model_list[i],tel=tel,filebase=model,star='M')
 	psgspec(model,newf,showplot=True)
 	model_rad=curr_dir+'/psg_output/%s_rad.txt' % model
 	t_ref = compute_t_ref(filenames=(model_rad,null_rad), t_exp=100, wl_min=0.4, wl_max=0.9,)
