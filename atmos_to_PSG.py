@@ -49,6 +49,8 @@ def atmosatm(model,tel='',filebase = '',null_spec=False,removed_gas=''):
 	  # Write configuration file --------------------------------
 	abun_list=[]
 	object_name='<OBJECT-NAME>'+model.rsplit('/', 1)[-1]
+	if null_spec==True:
+		object_name=object_name+'_null'
 	newf = []
 	newf.append(object_name)
 	newf.append('<ATMOSPHERE-DESCRIPTION>ATMOS Photochemistry')  # Description establishing the source/reference for the vertical profile
