@@ -14,20 +14,20 @@ atmos.start()
 
 curr_dir=os.getcwd()
 
-O2_flux_list=[8.7E+11,1.45E+12,9.64E+13]
+O2_flux_list=[3.5E+11,4.5E+11,5.2E+11]
 
 
-# for i in range(len(O2_flux_list)):
-    # O2_flux=O2_flux_list[i]
-    # output_dir=curr_dir+'/sample_atmos_results/O2_test_{n}'.format(n=i)
-    # args = {
-        # 'species_fluxes': {'O2' :O2_flux},
-        # 'max_photochem_iterations' : 50000, 
-        # 'max_clima_steps' : 10, 
-        # 'output_directory' : output_dir}
+for i in range(len(O2_flux_list)):
+    O2_flux=O2_flux_list[i]
+    output_dir=curr_dir+'/sample_atmos_results/O2_test_{n}'.format(n=i)
+    args = {
+        'species_fluxes': {'O2' :O2_flux},
+        'max_photochem_iterations' : 50000, 
+        'max_clima_steps' : 10, 
+        'output_directory' : output_dir}
     
     
-    # atmos.run(**args)
+    atmos.run(**args)
 
 model_list=glob.glob('sample_atmos_results/O2_test*')
 
@@ -66,4 +66,5 @@ for i in range(len(model_list)):
     EEC = detected['EEC']
     plt.hist(data['d'][obs&EEC], density=True, histtype='step', lw=2, bins=bins, label='Observed')
     plt.hist(data['d'][~obs&EEC], density=True, histtype='step', lw=2, bins=bins, label='Not observed')
+    plt.legend()
     plt.show()
