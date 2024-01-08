@@ -41,6 +41,7 @@ plt.clf()
 obs = ~np.isnan(data['has_H2O'])
 EEC = detected['EEC']
 
+
 bins = np.linspace(0, 150, 15)
 plt.hist(data['d'][obs&EEC], density=True, histtype='step', lw=2, bins=bins, label='Observed')
 plt.hist(data['d'][~obs&EEC], density=True, histtype='step', lw=2, bins=bins, label='Not observed')
