@@ -14,7 +14,7 @@ atmos.start()
 
 curr_dir=os.getcwd()
 
-O2_flux_list=[3.9E+11,4.0E+11,4.2E+11]
+O2_flux_list=[5E+10,9E+10,3.94985E+11,8E+11]
 
 
 for i in range(len(O2_flux_list)):
@@ -52,7 +52,7 @@ for i in range(len(model_list)):
 
     #create the null spectrum for t_ref
     
-    null_newf=atmosatm(model_list[i],tel=tel,filebase=model,null_spec=True,removed_gas="O3",star='M')
+    null_newf=atmosatm(model_list[i],tel=tel,filebase=model,null_spec=True,removed_gas="O2",star='M')
     psgspec(model,null_newf,showplot=False,null_spec=True)
     null_rad=curr_dir+'/psg_output/%s_null_rad.txt' % model
 
@@ -67,7 +67,7 @@ for i in range(len(model_list)):
     survey.save()
     
     
-    t_exp, N_obs = survey.measurements['has_H2O'].compute_exposure_time(data[detected['EEC']])
+    t_exp, N_obs = survey.measurements['has_O2'].compute_exposure_time(data[detected['EEC']])
 
     fig, ax = plt.subplots(ncols=2, figsize=(16,8))
 
