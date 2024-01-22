@@ -1,9 +1,9 @@
  1.000E-02          !Argon
- 6.064E-05          !Methane
- 1.316E-07          !Ethane
- 3.804E-04          !Carbon Dioxide
+ 7.256E-05          !Methane
+ 1.648E-07          !Ethane
+ 3.800E-04          !Carbon Dioxide
  9.775E-01          !Nitrogen
- 9.206E-11          !Oxygen
- 1.104E-04          !Hydrogen
- 2.835E-72          !Nitrogen Dioxide
+ 1.231E-11          !Oxygen
+ 1.235E-04          !Hydrogen
+ 4.532E-73          !Nitrogen Dioxide
  28                 !Tropopause layer
