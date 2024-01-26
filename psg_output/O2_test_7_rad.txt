@@ -6,7 +6,7 @@
 # ------------------------------------------------------------------------
 # Radiance spectrum
 # NASA-GSFC Planetary Spectrum Generator (PSG) (Villanueva et al. 2018, 2022)
-# Synthesized on Mon Jan 22 20:03:24 2024
+# Synthesized on Thu Jan 25 22:47:40 2024
 # Doppler velocities [km/s] (vobs,vrot+vorb,vwidth,vrfl,vstr): 0.00000,0.00000,0.00000,0.00000,0.00000
 # ------------------------------------------------------------------------
 # Spectra synthesized with the Planetary and Universal Model of Atmospheric Scattering (PUMAS, Villanueva et al. 2018, 2022)
