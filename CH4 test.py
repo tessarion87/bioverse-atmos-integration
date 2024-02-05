@@ -43,7 +43,7 @@ sample, detected, data = survey.quickrun(generator, t_total=10*365.25)
 
 # generate spectra and then calculate t_ref
 t_ref_list=[]
-tel='JWST'
+tel='Nautilus'
 
 for i in range(len(model_list)):
     model=model_list[i].split('/')[1]
@@ -64,12 +64,12 @@ for i in range(len(model_list)):
     print("Required exposure time for %s: {:.1f} hr".format(t_ref) % model)
 
 plt.plot(CH4_flux_list,t_ref_list)
-plt.vlines(1e4,0,1e10,linestyles='dotted',label='Detectability threshold')
-plt.vlines(1e11,0,1e10,linestyles='dashed',label='Archean Earth maximum')
+plt.vlines(1e5,0,1e8,linestyles='dotted',label='Detectability threshold')
+plt.vlines(1e11,0,1e8,linestyles='dashed',label='Archean Earth maximum')
 plt.xlabel(r'CH$_4$ flux (molecules/cm$^2$/s)')
 plt.ylabel('Required observation time (hrs)')
 plt.suptitle(r'Observation time vs CH$_4$ flux')
-plt.title('James Webb Space Telescope')
+plt.title('Nautilus Space Observatory')
 
 plt.scatter(CH4_flux_list,t_ref_list)
 plt.xscale('log')
@@ -77,5 +77,5 @@ plt.yscale('log')
 
 plt.legend()
 #plt.show()
-plt.savefig('/media/tessa/Storage/Alien_Earths/bioverse-atmos-integration/figures/CH4 vs obs time JWST.jpg')
+plt.savefig('/media/tessa/Storage/Alien_Earths/bioverse-atmos-integration/figures/CH4 vs obs time Nautilus.jpg')
 
