@@ -9,8 +9,8 @@ from tqdm import tqdm, trange
 import numpy as np
 import matplotlib.pyplot as plt
 
-atmos = pyatmos.Simulation(code_path='~/atmos-master',docker_image=None, DEBUG=True)
-atmos.start()
+# atmos = pyatmos.Simulation(code_path='~/atmos-master',docker_image=None, DEBUG=True)
+# atmos.start()
 
 curr_dir=os.getcwd()
 
@@ -42,7 +42,32 @@ survey=TransitSurvey('default')
 sample, detected, data = survey.quickrun(generator, t_total=10*365.25)
 
 # generate spectra and then calculate t_ref
-t_ref_list=[]
+t_ref_list_JWST=[]
+tel='JWST'
+
+for i in range(len(model_list)):
+    model=model_list[i].split('/')[1]
+
+    #create the null spectrum for t_ref
+    
+    null_newf=atmosatm(model_list[i],tel=tel,filebase=model,null_spec=True,removed_gas="O2",star='G')
+    psgspec(model,null_newf,showplot=False,null_spec=True)
+    null_rad=curr_dir+'/psg_output/%s_null_rad.txt' % model
+
+    #create radiance spectrum
+
+    newf=atmosatm(model_list[i],tel=tel,filebase=model,star='G')
+    psgspec(model,newf,showplot=False)
+    model_rad=curr_dir+'/psg_output/%s_rad.txt' % model
+    t_ref = compute_t_ref(filenames=(model_rad,null_rad), t_exp=10, wl_min=0.4, wl_max=0.9)
+    t_ref_list_JWST.append(t_ref)
+    print("Required exposure time for %s: {:.1f} hr".format(t_ref) % model)
+
+O2_flux_list.pop(0)
+t_ref_list_JWST.pop(0) #since the first entry of this list always seem weirdly low
+
+
+t_ref_list_nautilus=[]
 tel='Nautilus'
 
 for i in range(len(model_list)):
@@ -60,22 +85,24 @@ for i in range(len(model_list)):
     psgspec(model,newf,showplot=False)
     model_rad=curr_dir+'/psg_output/%s_rad.txt' % model
     t_ref = compute_t_ref(filenames=(model_rad,null_rad), t_exp=10, wl_min=0.4, wl_max=0.9)
-    t_ref_list.append(t_ref)
+    t_ref_list_nautilus.append(t_ref)
     print("Required exposure time for %s: {:.1f} hr".format(t_ref) % model)
 
-O2_flux_list.pop(0)
-t_ref_list.pop(0) #since the first entry of this list always seem weirdly low
-plt.plot(O2_flux_list,t_ref_list)
-plt.scatter(O2_flux_list,t_ref_list)
+t_ref_list_nautilus.pop(0) #since the first entry of this list always seem weirdly low
+
+
+
+plt.plot(O2_flux_list,t_ref_list_JWST, label='JWST')
+plt.scatter(O2_flux_list,t_ref_list_JWST)
+plt.plot(O2_flux_list,t_ref_list_nautilus,label='Nautilus')
+plt.scatter(O2_flux_list,t_ref_list_nautilus)
 plt.xscale('log')
 plt.yscale('log')
-plt.vlines(2.39e13,0,1e8,linestyles='dashed',label='Modern Earth')
-plt.xlim([4e10,1e14])
+plt.vlines(2.39e13,0,1e10,linestyles='dashed',label='Modern Earth')
 plt.ylabel('Required observation time (hrs)')
 plt.xlabel(r'O$_2$ flux (molecules/cm$^2$/s)')
 plt.suptitle(r'Observation time vs O$_2$ flux')
-plt.title('Nautilus Space Observatory')
 plt.legend()
 #plt.show()
-plt.savefig('/media/tessa/Storage/Alien_Earths/bioverse-atmos-integration/figures/O2 vs obs time Nautilus.jpg')
+plt.savefig('/home/tessa/Alien_Earths/bioverse-atmos-integration/figures/O2 vs obs time combined.jpg')
 
