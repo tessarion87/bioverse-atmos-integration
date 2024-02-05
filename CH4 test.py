@@ -14,7 +14,7 @@ atmos.start()
 
 curr_dir=os.getcwd()
 
-CH4_flux_list=[1E-2,1E-1,1,1E2,1E4,1E6,1E8,1E10,1E12,1E13]
+CH4_flux_list=[1E-2,1E-1,1,1E2,1E4,1E6,1E8,1E10,1E12,1E14,1E15]
 
 
 # for i in range(len(CH4_flux_list)):
@@ -68,7 +68,8 @@ plt.vlines(1e4,0,1e10,linestyles='dotted',label='Detectability threshold')
 plt.vlines(1e11,0,1e10,linestyles='dashed',label='Archean Earth maximum')
 plt.xlabel(r'CH$_4$ flux (molecules/cm$^2$/s)')
 plt.ylabel('Required observation time (hrs)')
-plt.title(r'Observation time vs CH$_4$ flux')
+plt.suptitle(r'Observation time vs CH$_4$ flux')
+plt.title('James Webb Space Telescope')
 
 plt.scatter(CH4_flux_list,t_ref_list)
 plt.xscale('log')
@@ -76,5 +77,5 @@ plt.yscale('log')
 
 plt.legend()
 #plt.show()
-plt.savefig('/home/tessa/Alien_Earths/bioverse-atmos-integration/figures/CH4 vs obs time.jpg')
+plt.savefig('/media/tessa/Storage/Alien_Earths/bioverse-atmos-integration/figures/CH4 vs obs time JWST.jpg')
 

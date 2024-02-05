@@ -9,25 +9,25 @@ from tqdm import tqdm, trange
 import numpy as np
 import matplotlib.pyplot as plt
 
-atmos = pyatmos.Simulation(code_path='~/atmos-master',docker_image=None, DEBUG=True)
+atmos = pyatmos.Simulation(code_path='/media/tessa/Storage/Dissertation_backup/atmos-master',docker_image=None, DEBUG=True)
 atmos.start()
 
 curr_dir=os.getcwd()
 
-CO_flux_list=[1E-3,1E-2,1E-1,1,1E2,1E4,1E6,1E8,1E10,1E12,1E13]
+CO_flux_list=[1E-3,1E-2,1E-1,1,1E2,1E4,1E6,1E8,1E10,1E12,1E13,1E14]
 
 
-# for i in range(len(CO_flux_list)):
-    # CO_flux=CO_flux_list[i]
-    # output_dir=curr_dir+'/sample_atmos_results/CO_test_{n}'.format(n=i)
-    # args = {
-        # 'species_fluxes': {'CO' :CO_flux},
-        # 'max_photochem_iterations' : 50000, 
-        # 'max_clima_steps' : 10, 
-        # 'output_directory' : output_dir}
+for i in range(len(CO_flux_list)):
+    CO_flux=CO_flux_list[i]
+    output_dir=curr_dir+'/sample_atmos_results/CO_test_{n}'.format(n=i)
+    args = {
+        'species_fluxes': {'CO' :CO_flux},
+        'max_photochem_iterations' : 50000, 
+        'max_clima_steps' : 10, 
+        'output_directory' : output_dir}
     
     
-    # atmos.run(**args)
+    atmos.run(**args)
 
 model_list=[]
 for i in range(len(CO_flux_list)):
@@ -69,8 +69,9 @@ plt.ylabel('Required observation time (hrs)')
 plt.scatter(CO_flux_list,t_ref_list)
 plt.xscale('log')
 plt.yscale('log')
-plt.title(r'Observation time vs CO flux')
+plt.suptitle(r'Observation time vs CO flux')
+plt.title('James Webb Space Telescope')
 #plt.show()
-plt.savefig('/home/tessa/Alien_Earths/bioverse-atmos-integration/figures/CO vs obs time.jpg')
+plt.savefig('/media/tessa/Storage/Alien_Earths/bioverse-atmos-integration/figures/CO vs obs time JWST.jpg')
 
 
