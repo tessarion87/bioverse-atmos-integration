@@ -8,26 +8,27 @@ import os
 from tqdm import tqdm, trange
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 atmos = pyatmos.Simulation(code_path='~/atmos-master',docker_image=None, DEBUG=True)
 atmos.start()
 
 curr_dir=os.getcwd()
 
-CH4_flux_list=[1E-2,1E-1,1,1E2,1E4,1E6,1E8,1E10,1E12,1E14,1E15]
+CH4_flux_list=[1E-2,1E-1,1,1E2,1E3,1E4,1E5,1E6,1E7,1E8,1E9,1E10,1E11,1E12,1E13,1E14,1E15]
 
 
-# for i in range(len(CH4_flux_list)):
-    # CH4_flux=CH4_flux_list[i]
-    # output_dir=curr_dir+'/sample_atmos_results/CH4_test_{n}'.format(n=i)
-    # args = {
-        # 'species_fluxes': {'CH4' :CH4_flux},
-        # 'max_photochem_iterations' : 50000, 
-        # 'max_clima_steps' : 10, 
-        # 'output_directory' : output_dir}
+for i in range(len(CH4_flux_list)):
+    CH4_flux=CH4_flux_list[i]
+    output_dir=curr_dir+'/sample_atmos_results/CH4_test_{n}'.format(n=i)
+    args = {
+        'species_fluxes': {'CH4' :CH4_flux},
+        'max_photochem_iterations' : 50000, 
+        'max_clima_steps' : 10, 
+        'output_directory' : output_dir}
     
     
-    # atmos.run(**args)
+    atmos.run(**args)
 
 model_list=[]
 for i in range(len(CH4_flux_list)):
@@ -90,7 +91,6 @@ plt.scatter(CH4_flux_list,t_ref_list_JWST)
 plt.plot(CH4_flux_list,t_ref_list_nautilus,label='Nautilus')
 plt.scatter(CH4_flux_list,t_ref_list_nautilus)
 
-#plt.vlines(1e5,0,1e8,linestyles='dotted',label='Detectability threshold')
 plt.vlines(1e11,0,1e8,linestyles='dashed',label='Archean Earth maximum')
 plt.xlabel(r'CH$_4$ flux (molecules/cm$^2$/s)')
 plt.ylabel('Required observation time (hrs)')
@@ -101,5 +101,10 @@ plt.yscale('log')
 
 plt.legend()
 #plt.show()
-plt.savefig('/home/tessa/Alien_Earths/bioverse-atmos-integration/figures/CH4 vs obs time combined.jpg')
+plt.savefig('/home/tessa/Alien Earths/bioverse-atmos-integration/figures/CH4 vs obs time combined.jpg')
 
+CH4_table=pd.DataFrame()
+CH4_table.insert(0,'CH4 surface flux',CH4_flux_list)
+CH4_table.insert(1,'t_ref (JWST)',t_ref_list_JWST)
+CH4_table.insert(2,'t_ref (Nautilus)',t_ref_list_nautilus)
+CH4_table.to_csv('CH4 t_ref lookup table.csv')

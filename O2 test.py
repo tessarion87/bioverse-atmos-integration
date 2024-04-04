@@ -8,6 +8,7 @@ import os
 from tqdm import tqdm, trange
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # atmos = pyatmos.Simulation(code_path='~/atmos-master',docker_image=None, DEBUG=True)
 # atmos.start()
@@ -91,7 +92,6 @@ for i in range(len(model_list)):
 t_ref_list_nautilus.pop(0) #since the first entry of this list always seem weirdly low
 
 
-
 plt.plot(O2_flux_list,t_ref_list_JWST, label='JWST')
 plt.scatter(O2_flux_list,t_ref_list_JWST)
 plt.plot(O2_flux_list,t_ref_list_nautilus,label='Nautilus')
@@ -102,7 +102,13 @@ plt.vlines(2.39e13,0,1e10,linestyles='dashed',label='Modern Earth')
 plt.ylabel('Required observation time (hrs)')
 plt.xlabel(r'O$_2$ flux (molecules/cm$^2$/s)')
 plt.suptitle(r'Observation time vs O$_2$ flux')
+plt.xlim(1e10,1e14)
 plt.legend()
 #plt.show()
-plt.savefig('/home/tessa/Alien_Earths/bioverse-atmos-integration/figures/O2 vs obs time combined.jpg')
+plt.savefig('/home/tessa/Alien Earths/bioverse-atmos-integration/figures/O2 vs obs time combined.jpg')
 
+O2_table=pd.DataFrame()
+O2_table.insert(0,'O2 surface flux',O2_flux_list)
+O2_table.insert(1,'t_ref (JWST)',t_ref_list_JWST)
+O2_table.insert(2,'t_ref (Nautilus)',t_ref_list_nautilus)
+O2_table.to_csv('O2 t_ref lookup table.csv')

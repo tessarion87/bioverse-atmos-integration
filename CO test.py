@@ -9,25 +9,25 @@ from tqdm import tqdm, trange
 import numpy as np
 import matplotlib.pyplot as plt
 
-# atmos = pyatmos.Simulation(code_path='/media/tessa/Storage/Dissertation_backup/atmos-master',docker_image=None, DEBUG=True)
-# atmos.start()
+atmos = pyatmos.Simulation(code_path='/home/tessa/atmos-master',docker_image=None, DEBUG=True)
+atmos.start()
 
 curr_dir=os.getcwd()
 
-CO_flux_list=[1E-3,1E-2,1E-1,1,1E2,1E4,1E6,1E8,1E10,1E12,1E13,1E14]
+CO_flux_list=[1E-3,1E-2,1E-1,1,1E2,1E3,1E4,1E5,1E6,1E7,1E8,1E9,1E10,1E11,1E12,1E13,1E14]
 
 
-# for i in range(len(CO_flux_list)):
-    # CO_flux=CO_flux_list[i]
-    # output_dir=curr_dir+'/sample_atmos_results/CO_test_{n}'.format(n=i)
-    # args = {
-        # 'species_fluxes': {'CO' :CO_flux},
-        # 'max_photochem_iterations' : 50000, 
-        # 'max_clima_steps' : 10, 
-        # 'output_directory' : output_dir}
+for i in range(len(CO_flux_list)):
+    CO_flux=CO_flux_list[i]
+    output_dir=curr_dir+'/sample_atmos_results/CO_test_{n}'.format(n=i)
+    args = {
+        'species_fluxes': {'CO' :CO_flux},
+        'max_photochem_iterations' : 50000, 
+        'max_clima_steps' : 10, 
+        'output_directory' : output_dir}
     
     
-    # atmos.run(**args)
+    atmos.run(**args)
 
 model_list=[]
 for i in range(len(CO_flux_list)):
