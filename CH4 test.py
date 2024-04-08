@@ -15,7 +15,7 @@ atmos.start()
 
 curr_dir=os.getcwd()
 
-CH4_flux_list=[1E-2,1E-1,1,1E2,1E3,1E4,1E5,1E6,1E7,1E8,1E9,1E10,1E11,1E12,1E13,1E14,1E15]
+CH4_flux_list=[1E3,1E4,1E5,1E6,1E7,1E8,1E9,1E10,1E11,1E12,1E13,1E14,1E15]
 
 
 for i in range(len(CH4_flux_list)):
